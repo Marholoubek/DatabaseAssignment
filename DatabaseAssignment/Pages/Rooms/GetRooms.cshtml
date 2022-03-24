@@ -47,9 +47,11 @@
             @{
                 if (!item.Occupied)
                 {
-                    <a class="btn btn-info text-dark" asp-area="" onClick="@Model.OnPost(item.PlaceNo.ToString())" >Assign</a>
+            <td> <a class="btn btn-info text-dark" asp-area="" onClick="@Model.OnPost(item.PlaceNo.ToString())" >Assign</a></td>
 
-                }}
+                }
+                
+            }
         </tr>}
     </tbody>
 </table>
