@@ -38,7 +38,6 @@ namespace StudentAccomodation.Pages.Rooms
         {
             leasingService.AssignRoomToStudent(Convert.ToInt32(placeNo));
             rooms = roomService.GetAllRooms();
-            throw new NotImplementedException();
             return Page();
             
 
