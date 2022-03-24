@@ -2,15 +2,18 @@
 @model StudentAccomodation.Pages.Apartments.ApartmentRoomsModel
 @{
 }
-<h1>Apartments</h1>
+<h1>Apartment no. @{Model.Apartment.ApartmentNo}</h1>
+<h3>Address: @{Model.Apartment.Address}</h3>
 
 <table class="table">
     <thead>
-        <tr>
-            <th>  Apartment Number   </th>
-            <th>    Address  </th>
-            <th>  Types  </th>
-        </tr>
+    <tr>
+        <th> Place Number </th>
+        <th> RentPerSemester </th>
+        <th> Occupied </th>
+        <th> Room Number </th>
+        <th> Dormitory Number </th>
+    </tr>
     </thead>
     <tbody>
     @foreach (var item in Model.Rooms)
@@ -21,7 +24,7 @@
             <td> @item.Occupied </td>
             <td> @item.RoomNo </td>
             <td> @item.DormitoryNo </td>
-            <td> @item.ApartmentNo </td>
-        </tr>}
+        </tr>
+    }
     </tbody>
 </table>

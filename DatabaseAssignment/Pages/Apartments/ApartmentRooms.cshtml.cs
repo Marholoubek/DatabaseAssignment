@@ -14,7 +14,7 @@ namespace StudentAccomodation.Pages.Apartments
 
 
         public IEnumerable<Room> Rooms { get; set; }
-        // public Apartment Apartment { get; set; }
+        public Apartment Apartment { get; set; }
 
         public ApartmentRoomsModel(IApartmentService service, IRoomService serviceRoom)
         {
@@ -24,6 +24,7 @@ namespace StudentAccomodation.Pages.Apartments
         public void OnGet(string id)
         {
             Rooms = roomService.GetAllRoomsInApartment(Convert.ToInt32(id));
+            Apartment = apartmentService.GetApartmentById(Convert.ToInt32(id));
         }
     }
 }
