@@ -1,0 +1,29 @@
+@page
+@model DatabaseAssignment.Pages.Dormitories.DormitoriesRooms
+
+<h1>Rooms for dormitory no. @Model.Dormitory.ApartmentNo</h1>
+<h3>Address: @Model.Dormitory.Address</h3>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th> Place Number </th>
+        <th> RentPerSemester </th>
+        <th> Occupied </th>
+        <th> Room Number </th>
+        <th> Dormitory Number </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Rooms)
+    {
+        <tr>
+            <td> @item.PlaceNo </td>
+            <td> @item.RentPerSemester </td>
+            <td> @item.Occupied </td>
+            <td> @item.RoomNo </td>
+            <td> @item.DormitoryNo </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -20,5 +20,10 @@ namespace StudentAccomodation.Services.Services.DormitorySrervice
         {
             return service.GetAllDormitories();
         }
+        
+        public Dormitory GetDormitoryById(int id)
+        {
+            return service.GetDormitoryById(id);
+        }
     }
 }

@@ -10,6 +10,7 @@
             <th>  Apartment Number   </th>
             <th>    Address  </th>
             <th>  Types  </th>
+            <th>  Vacant rooms  </th>
         </tr>
     </thead>
     <tbody>
@@ -19,7 +20,7 @@
     <td> @item.ApartmentNo </td>
     <td> @item.Address </td>
     <td> @item.Types </td>
-    <td> <a class="nav-link text-dark" asp-area="" asp-page="/Apartments/ApartmentRooms" asp-route-id="@item.ApartmentNo">All rooms</a> </td>
+    <td> <a class="nav-link text-dark" asp-area="" asp-page="/Apartments/ApartmentRooms" asp-route-id="@item.ApartmentNo">Display rooms</a> </td>
 </tr>
 }
     </tbody>

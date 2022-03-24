@@ -20,9 +20,23 @@ namespace StudentAccomodation.Services.Services.DormitorySrervice
 
         public List<Dormitory> GetAllDormitories()
         {
+            string query = "select *  from Dormitory";
+            return GetDormitories(query);
+        }
+        
+        public Dormitory GetDormitoryById(int id)
+        {
+            
+            string query = $"select *  from Appartment where Dormitory_No = {id}";
+            return GetDormitories(query).First();
+        }
+        
+        
+
+        public List<Dormitory> GetDormitories(string query)
+        {
             List<Dormitory> returnList = new List<Dormitory>();
             string connectionString = Configuration["ConnectionStrings:AccommodationConection"];
-            string query = "select *  from Dormitory";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -33,7 +47,7 @@ namespace StudentAccomodation.Services.Services.DormitorySrervice
                     while (reader.Read())
                     {
                         Dormitory dormitory = new Dormitory();
-                        dormitory.DormitorytNo = Convert.ToInt32(reader["Dormitory_No"]);
+                        dormitory.DormitoryNo = Convert.ToInt32(reader["Dormitory_No"]);
                         dormitory.Name = Convert.ToString(reader["Name"]);
                         dormitory.Address = Convert.ToString(reader["Address"]);
                         
