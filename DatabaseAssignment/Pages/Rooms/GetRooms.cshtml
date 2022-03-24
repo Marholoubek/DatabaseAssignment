@@ -44,6 +44,12 @@
             <td> @item.RoomNo </td>
             <td> @item.DormitoryNo </td>
             <td> @item.ApartmentNo </td>
+            @{
+                if (!item.Occupied)
+                {
+                    <a class="btn btn-info text-dark" asp-area="" onClick="@Model.OnPost(item.PlaceNo.ToString())" >Assign</a>
+
+                }}
         </tr>}
     </tbody>
 </table>
