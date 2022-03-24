@@ -32,5 +32,9 @@ namespace StudentAccomodation.Services.Services.RoomService
             return service.GetAllRoomsInApartment(id); 
 
         }
+        public IEnumerable<Room> GetAllVacantRooms()
+        {
+            return service.GetAllVacantRooms();
+        }
     }
 }

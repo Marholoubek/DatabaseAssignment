@@ -16,6 +16,11 @@ namespace StudentAccomodation.Services.Services.LeasingService
             Configuration = configuration;
         }
 
+        public void AssignRoomToStudent(int id)
+        {
+            string query1 = "";
+        }
+
         public List<Leasing> GetAllLeasings()
         {
             List<Leasing> returnList = new List<Leasing>();
