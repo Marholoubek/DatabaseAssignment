@@ -19,8 +19,51 @@ namespace StudentAccomodation.Services.Services.LeasingService
         public void AssignRoomToStudent(int id)
         {
             DateTime now = DateTime.Now;
-            string query1 = "insert into Leasing (Student_No, Place_No, Date_From, Date_To) values ('1', '1','2022-07-02 01:01:01', '2022-11-03 01:01:01')";
+            DateTime nowPlusHalf = DateTime.Now.Add(TimeSpan.FromDays(120));
+            string day = now.Day.ToString();
+            if (now.Day < 10)
+            {
+                day = $"0{day}";
+            }
+            string month = now.Month.ToString();
+            if (now.Month < 10)
+            {
+                month = $"0{month}";
+            }
+            string day2 = nowPlusHalf.Day.ToString();
+            if (nowPlusHalf.Day < 10)
+            {
+                day2 = $"0{day2}";
+            }
+            string month2 = nowPlusHalf.Month.ToString();
+            if (nowPlusHalf.Month < 10)
+            {
+                month2 = $"0{month2}";
+            }
+            
+            Student student = new Student();
+            string queryStudents = "select * from Student where Has_Room = 0 order by Registration_Date";
             string connectionString = Configuration["ConnectionStrings:AccommodationConection"];
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(queryStudents, connection))
+                {
+                    SqlDataReader reader = command.ExecuteReader();
+                    reader.Read();
+                    student.StudentNo = Convert.ToInt32(reader["Student_No"]);
+                    student.SName = Convert.ToString(reader["SName"]);
+                    student.SAddress = Convert.ToString(reader["SAddress"]);
+                    student.HasRent = Convert.ToBoolean(reader["Has_Room"]);
+                    student.RegistrationDate = Convert.ToDateTime(reader["Registration_Date"]);
+                }
+                connection.Close();
+            }
+            
+            
+            
+            string query1 = $"insert into Leasing (Student_No, Place_No, Date_From, Date_To) values ('{student.StudentNo}', '{id.ToString()}','{now.Year}-{month}-{day} 01:01:01', '{nowPlusHalf.Year}-{month2}-{day2} 01:01:01')";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
