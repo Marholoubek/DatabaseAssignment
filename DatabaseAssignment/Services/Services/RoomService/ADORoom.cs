@@ -34,7 +34,7 @@ namespace StudentAccomodation.Services.Services.RoomService
         
         public List<Room> GetAllVacantRooms()
         {
-            string query = "select *  from Student where Occupied = 'False'";
+            string query = "select *  from Room where Occupied = 'False'";
             return GetRooms(query);
         }
         
