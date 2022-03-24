@@ -28,7 +28,7 @@ namespace StudentAccomodation.Services.Services.RoomService
         }
         public List<Room> GetAllRoomsInDormitory(int id)
         {
-            string query = "select *  from Room where Dormitory_No = {id}";
+            string query = $"select *  from Room where Dormitory_No = {id}";
             return GetRooms(query);
         }
         

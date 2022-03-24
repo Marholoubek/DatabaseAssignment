@@ -27,7 +27,7 @@ namespace StudentAccomodation.Services.Services.DormitorySrervice
         public Dormitory GetDormitoryById(int id)
         {
             
-            string query = $"select *  from Appartment where Dormitory_No = {id}";
+            string query = $"select *  from Dormitory where Dormitory_No = {id}";
             return GetDormitories(query).First();
         }
         
