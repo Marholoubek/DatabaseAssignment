@@ -18,7 +18,18 @@ namespace StudentAccomodation.Services.Services.LeasingService
 
         public void AssignRoomToStudent(int id)
         {
-            string query1 = "";
+            DateTime now = DateTime.Now;
+            string query1 = "insert into Leasing (Leasing_No, Student_No, Place_No, Date_From, Date_To) values ('1', '1', '1','2015-12-25T15:32:06.427'. '2016-12-25T15:32:06.427')";
+            string connectionString = Configuration["ConnectionStrings:AccommodationConection"];
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query1, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         public List<Leasing> GetAllLeasings()

@@ -2,7 +2,7 @@
 @model StudentAccomodation.Pages.Rooms.GetRoomsModel
 @{
 
-    
+
 }
 @{
     if (Model.IsVacant)
@@ -28,37 +28,36 @@
 
 <table class="table">
     <thead>
-        <tr>
-            <th>  Place Number   </th>
-            <th>    RentPerSemester  </th>
-            <th>  Occupied  </th>
-            <th>    Room Number  </th>
-            <th>  Dormitory Number  </th>
-            <th>  Apartment Number  </th>
-        </tr>
+    <tr>
+        <th> Place Number </th>
+        <th> RentPerSemester </th>
+        <th> Occupied </th>
+        <th> Room Number </th>
+        <th> Dormitory Number </th>
+        <th> Apartment Number </th>
+    </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.rooms)
-        {
-            <tr>
-                <td> @item.PlaceNo </td>
-                <td> @item.RentPerSemester </td>
-                <td> @item.Occupied </td>
-                <td> @item.RoomNo </td>
-                <td> @item.DormitoryNo </td>
-                <td> @item.ApartmentNo </td>
-                @{
-                    if (!item.Occupied)
-                    {
-                                <td>
-                                    <a class="btn btn-primary text-dark" asp-area="" asp-page="/Rooms/GetRooms" asp-route-placeNo="@item.PlaceNo">Asign</a>
+    @foreach (var item in Model.rooms)
+    {
+        <tr>
+            <td> @item.PlaceNo </td>
+            <td> @item.RentPerSemester </td>
+            <td> @item.Occupied </td>
+            <td> @item.RoomNo </td>
+            <td> @item.DormitoryNo </td>
+            <td> @item.ApartmentNo </td>
+            @{
+                if (!item.Occupied)
+                {
+                    <td>
+                        <a class="btn btn-primary text-dark" asp-area="" asp-page="/Rooms/GetRooms" asp-route-placeNo="@item.PlaceNo">Asign</a>
 
-                                </td>
+                    </td>
+                }
 
-                                    }
-
-                                    }
-</tr>
-}
+            }
+        </tr>
+    }
     </tbody>
 </table>
