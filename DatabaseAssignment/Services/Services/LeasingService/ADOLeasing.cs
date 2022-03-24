@@ -64,11 +64,20 @@ namespace StudentAccomodation.Services.Services.LeasingService
             
             
             string query1 = $"insert into Leasing (Student_No, Place_No, Date_From, Date_To) values ('{student.StudentNo}', '{id.ToString()}','{now.Year}-{month}-{day} 01:01:01', '{nowPlusHalf.Year}-{month2}-{day2} 01:01:01')";
-
+            string query2 = $"update Room set Occupied = 'True' where Place_No = {id}";
+            string query3 = $"update Student set Has_Room = 'True' where Student_No = {student.StudentNo}";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(query1, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+                using (SqlCommand command = new SqlCommand(query2, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+                using (SqlCommand command = new SqlCommand(query3, connection))
                 {
                     command.ExecuteNonQuery();
                 }
