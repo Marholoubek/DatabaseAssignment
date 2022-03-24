@@ -4,22 +4,22 @@
 @{
     if (Model.IsWaiting)
     {
-        <h1>Students</h1>
+        <h1>All waiting students</h1>
     }
     else
     {
-        <h1>All waiting students</h1>
+        <h1>Students</h1>
     }
 }
 
 @{
     if (Model.IsWaiting)
     {
-<a class="btn btn-primary text-dark" asp-area="" asp-page="/Students/GetStudents" asp-route-isWaiting="false">Display all students</a>
+        <a class="btn btn-primary text-dark" asp-area="" asp-page="/Students/GetStudents" asp-route-isWaiting="false">Display all students</a>
     }
     else
     {
-<a class="btn btn-primary text-dark" asp-area="" asp-page="/Students/GetStudents" asp-route-isWaiting="true">Display on waiting list</a>
+        <a class="btn btn-primary text-dark" asp-area="" asp-page="/Students/GetStudents" asp-route-isWaiting="true">Display on waiting list</a>
     }
 }
 
@@ -37,13 +37,13 @@
     <tbody>
         @foreach (var item in Model.students)
         {
-        <tr>
-            <td> @item.StudentNo </td>
-            <td> @item.SName </td>
-            <td> @item.SAddress </td>
-            <td> @item.HasRent </td>
-            <td> @item.RegistrationDate </td>
-        </tr>
+            <tr>
+                <td> @item.StudentNo </td>
+                <td> @item.SName </td>
+                <td> @item.SAddress </td>
+                <td> @item.HasRent </td>
+                <td> @item.RegistrationDate </td>
+            </tr>
         }
     </tbody>
 </table>

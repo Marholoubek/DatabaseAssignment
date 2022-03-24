@@ -24,7 +24,7 @@ namespace StudentAccomodation.Services.Services.StudentService
         }
         public List<Student> GetAllWaitingStudents()
         {
-            string query = "select *  from Student where Has_Room = false ORDER BY Registration_Date ASC";
+            string query = "select *  from Student where Has_Room = 'False' ORDER BY Registration_Date ASC";
             return GetStudents(query);
         }
         
