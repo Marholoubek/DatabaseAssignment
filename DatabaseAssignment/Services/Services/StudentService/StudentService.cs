@@ -20,5 +20,9 @@ namespace StudentAccomodation.Services.Services.StudentService
         {
             return service.GetAllStudents();
         }
+        public IEnumerable<Student> GetAllWaitingStudents()
+        {
+            return service.GetAllWaitingStudents();
+        }
     }
 }

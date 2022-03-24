@@ -1,8 +1,28 @@
 ﻿@page
 @model StudentAccomodation.Pages.Students.GetStudentsModel
+
 @{
+    if (Model.IsWaiting)
+    {
+        <h1>Students</h1>
+    }
+    else
+    {
+        <h1>All waiting students</h1>
+    }
 }
-<h1>Students</h1>
+
+@{
+    if (Model.IsWaiting)
+    {
+<a class="btn btn-primary text-dark" asp-area="" asp-page="/Students/GetStudents" asp-route-isWaiting="false">Display all students</a>
+    }
+    else
+    {
+<a class="btn btn-primary text-dark" asp-area="" asp-page="/Students/GetStudents" asp-route-isWaiting="true">Display on waiting list</a>
+    }
+}
+
 
 <table class="table">
     <thead>

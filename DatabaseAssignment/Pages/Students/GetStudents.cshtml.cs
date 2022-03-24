@@ -12,16 +12,20 @@ namespace StudentAccomodation.Pages.Students
     public class GetStudentsModel : PageModel
     {
         private IStudentService studentService;
+        
 
         public IEnumerable<Student> students { get; set; }
+
+        public bool IsWaiting { get; set; } 
 
         public GetStudentsModel(IStudentService service)
         {
             studentService = service;
         }
-        public void OnGet()
+        public void OnGet(string isWaiting)
         {
-            students = studentService.GetAllStudents();
+            IsWaiting = isWaiting is "true";
+            students = IsWaiting ? studentService.GetAllWaitingStudents() : studentService.GetAllStudents();
         }
     }
 }

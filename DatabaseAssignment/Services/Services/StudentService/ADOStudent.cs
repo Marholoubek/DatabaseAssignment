@@ -19,9 +19,20 @@ namespace StudentAccomodation.Services.Services.StudentService
 
         public List<Student> GetAllStudents()
         {
+            string query = "select *  from Student";
+            return GetStudents(query);
+        }
+        public List<Student> GetAllWaitingStudents()
+        {
+            string query = "select *  from Student where Has_Room = false ORDER BY Registration_Date ASC";
+            return GetStudents(query);
+        }
+        
+
+        public List<Student> GetStudents(string query)
+        {
             List<Student> returnList = new List<Student>();
             string connectionString = Configuration["ConnectionStrings:AccommodationConection"];
-            string query = "select *  from Student";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
