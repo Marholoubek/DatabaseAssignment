@@ -1,11 +1,9 @@
-﻿using StudentAccomodation.Models;
-using StudentAccomodation.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using DatabaseAssignment.Services.Interfaces;
+using StudentAccomodation.Models;
+using StudentAccomodation.Services.Services.ApartmentService;
 
-namespace StudentAccomodation.Services.Services.ApartmentService
+namespace DatabaseAssignment.Services.Services.ApartmentService
 {
     public class ApartmentService : IApartmentService
     {
@@ -20,5 +18,11 @@ namespace StudentAccomodation.Services.Services.ApartmentService
         {
             return service.GetAllApartments();
         }
+        
+        public Apartment GetApartmentById(int id)
+        {
+            return service.GetApartmentById(id);
+        }
+        
     }
 }

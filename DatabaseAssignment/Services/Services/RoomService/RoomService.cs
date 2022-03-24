@@ -21,5 +21,16 @@ namespace StudentAccomodation.Services.Services.RoomService
         {
             return service.GetAllRooms();
         }
+
+        public IEnumerable<Room> GetAllRoomsInDormitory(int id)
+        {
+            return service.GetAllRoomsInDormitory(id); 
+        }
+
+        public IEnumerable<Room> GetAllRoomsInApartment(int id)
+        {
+            return service.GetAllRoomsInApartment(id); 
+
+        }
     }
 }

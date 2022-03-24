@@ -18,10 +18,26 @@ namespace StudentAccomodation.Services.Services.RoomService
 
         public List<Room> GetAllRooms()
         {
+            string query = "select *  from Room";
+            return GetRooms(query);
+        }
+        public List<Room> GetAllRoomsInApartment(int id)
+        {
+            string query = $"select *  from Room where Appart_No = {id}";
+            return GetRooms(query);
+        }
+        public List<Room> GetAllRoomsInDormitory(int id)
+        {
+            string query = "select *  from Room where Dormitory_No = {id}";
+            return GetRooms(query);
+        }
+        
+        
+
+        public List<Room> GetRooms(string query)
+        {
             List<Room> returnList = new List<Room>();
             string connectionString = Configuration["ConnectionStrings:AccommodationConection"];
-            string query = "select *  from Room";
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();

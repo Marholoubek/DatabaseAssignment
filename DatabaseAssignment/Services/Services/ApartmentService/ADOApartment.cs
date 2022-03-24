@@ -16,6 +16,31 @@ namespace StudentAccomodation.Services.Services.ApartmentService
             Configuration = configuration;
         }
 
+        public Apartment GetApartmentById(int id)
+        {
+            List<Apartment> returnList = new List<Apartment>();
+            string connectionString = Configuration["ConnectionStrings:AccommodationConection"];
+            string query = $"select *  from Appartment where Appart_No = {id}";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Apartment apartment = new Apartment();
+                        apartment.ApartmentNo = Convert.ToInt32(reader["Appart_No"]);
+                        apartment.Address = Convert.ToString(reader["Address"]);
+                        apartment.Types = Convert.ToString(reader["Types"]);
+                        returnList.Add(apartment);
+                    }
+                }
+                return returnList.First();
+            }
+        }
+        
+        
         public List<Apartment> GetAllApartments()
         {
             List<Apartment> returnList = new List<Apartment>();
