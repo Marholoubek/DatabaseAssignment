@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using StudentAccomodation.Models;
 using StudentAccomodation.Services.Interfaces;
 
-namespace DatabaseAssignment.Pages.Apartments
+namespace StudentAccomodation.Pages.Apartments
 {
     public class GetApartmentsModel : PageModel
     {
