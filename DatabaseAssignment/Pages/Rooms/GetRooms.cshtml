@@ -1,6 +1,9 @@
 ﻿@page
 @model StudentAccomodation.Pages.Rooms.GetRoomsModel
-@{ }
+@{
+
+    
+}
 @{
     if (Model.IsVacant)
     {
@@ -37,21 +40,25 @@
     <tbody>
         @foreach (var item in Model.rooms)
         {
-        <tr>
-            <td> @item.PlaceNo </td>
-            <td> @item.RentPerSemester </td>
-            <td> @item.Occupied </td>
-            <td> @item.RoomNo </td>
-            <td> @item.DormitoryNo </td>
-            <td> @item.ApartmentNo </td>
-            @{
-                if (!item.Occupied)
-                {
-            <td> <a class="btn btn-info text-dark" asp-area="" onClick="@Model.OnPost(item.PlaceNo.ToString())" >Assign</a></td>
+            <tr>
+                <td> @item.PlaceNo </td>
+                <td> @item.RentPerSemester </td>
+                <td> @item.Occupied </td>
+                <td> @item.RoomNo </td>
+                <td> @item.DormitoryNo </td>
+                <td> @item.ApartmentNo </td>
+                @{
+                    if (!item.Occupied)
+                    {
+                                <td>
+                                    <a class="btn btn-primary text-dark" asp-area="" asp-page="/Rooms/GetRooms" asp-route-placeNo="@item.PlaceNo">Asign</a>
 
-                }
-                
-            }
-        </tr>}
+                                </td>
+
+                                    }
+
+                                    }
+</tr>
+}
     </tbody>
 </table>

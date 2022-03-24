@@ -16,22 +16,31 @@ namespace StudentAccomodation.Pages.Rooms
 
         public IEnumerable<Room> rooms { get; set; }
         public bool IsVacant { get; set; } 
+
         public GetRoomsModel(IRoomService service, ILeasingService lService)
         {
             roomService = service;
             leasingService = lService;
         }
-        public void OnGet(string isVacant)
+        public PageResult OnGet(string isVacant, string placeNo)
         {
+            if (placeNo != null)
+            {
+                return OnPost(placeNo);
+                
+            }
             IsVacant = isVacant is "true";
             rooms = IsVacant ? roomService.GetAllVacantRooms() : roomService.GetAllRooms();
+            return Page();
         }
 
-        public PageResult OnPost(string id) 
+        public PageResult OnPost(string placeNo) 
         {
-            leasingService.AssignRoomToStudent(Convert.ToInt32(id));
+            leasingService.AssignRoomToStudent(Convert.ToInt32(placeNo));
             rooms = roomService.GetAllRooms();
+            throw new NotImplementedException();
             return Page();
+            
 
         }
     }
