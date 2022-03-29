@@ -16,8 +16,9 @@ namespace StudentAccomodation.Services.Services.LeasingService
             Configuration = configuration;
         }
 
-        public void AssignRoomToStudent(int id)
+        public void AssignRoomToStudent(int? id = null)
         {
+            
             DateTime now = DateTime.Now;
             DateTime nowPlusHalf = DateTime.Now.Add(TimeSpan.FromDays(120));
             string day = now.Day.ToString();

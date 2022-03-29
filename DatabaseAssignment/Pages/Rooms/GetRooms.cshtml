@@ -18,11 +18,11 @@
 @{
     if (Model.IsVacant)
     {
-        <a class="btn btn-primary text-dark" asp-area="" asp-page="/Rooms/GetRooms" asp-route-isVacant="false">Display all rooms</a>
+        <a class="btn btn-secondary" asp-area="" asp-page="/Rooms/GetRooms" asp-route-isVacant="false">Display all rooms</a>
     }
     else
     {
-        <a class="btn btn-primary text-dark" asp-area="" asp-page="/Rooms/GetRooms" asp-route-isVacant="true">Display vacant rooms</a>
+        <a class="btn btn-secondary" asp-area="" asp-page="/Rooms/GetRooms" asp-route-isVacant="true">Display vacant rooms</a>
     }
 }
 
