@@ -28,6 +28,13 @@ namespace StudentAccomodation.Services.Services.StudentService
             return GetStudents(query);
         }
         
+        public List<Student> GetAllAcceptedStudents()
+        {
+            string query = "select *  from Student where Has_Room = 'True' ORDER BY Registration_Date ASC";
+            return GetStudents(query);
+        }
+        
+
 
         public List<Student> GetStudents(string query)
         {

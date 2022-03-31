@@ -15,7 +15,6 @@ namespace StudentAccomodation.Services.Services.LeasingService
         {
             Configuration = configuration;
         }
-
         public void AssignRoomToStudent(int id)
         {
             DateTime now = DateTime.Now;
@@ -59,6 +58,11 @@ namespace StudentAccomodation.Services.Services.LeasingService
                     student.RegistrationDate = Convert.ToDateTime(reader["Registration_Date"]);
                 }
                 connection.Close();
+            }
+            
+            if (student.SName == null || student.SAddress == null || student.RegistrationDate == null)
+            {
+                return;
             }
             
             

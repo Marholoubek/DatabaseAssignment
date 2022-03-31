@@ -40,7 +40,6 @@ namespace StudentAccomodation.Pages.Rooms
             rooms = roomService.GetAllRooms();
             return Page();
             
-
         }
     }
 }
