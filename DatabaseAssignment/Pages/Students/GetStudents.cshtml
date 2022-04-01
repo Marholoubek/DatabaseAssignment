@@ -43,6 +43,7 @@
                 <td> @item.SAddress </td>
                 <td> @item.HasRent </td>
                 <td> @item.RegistrationDate </td>
+                <td> <a class="nav-link text-dark" asp-area="" asp-page="/Students/StudentDetails" asp-route-id="@item.StudentNo">Details</a> </td>
             </tr>
         }
     </tbody>

@@ -17,6 +17,20 @@ namespace StudentAccomodation.Services.Services.StudentService
             Configuration = configuration;
         }
 
+        public void DeleteStudent(int id)
+        {
+            using (var connection = new SqlConnection(Configuration.GetConnectionString("DefaultConnection")))
+            {
+                connection.Open();
+                var command = new SqlCommand("DELETE FROM Student WHERE Student_No = @id", connection);
+                var command2 = new SqlCommand("DELETE FROM Leasing WHERE Student_No = @id", connection);
+                command.Parameters.AddWithValue("@id", id);
+                command2.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
+                command2.ExecuteNonQuery();
+            }
+        }
+
         public List<Student> GetAllStudents()
         {
             string query = "select *  from Student";

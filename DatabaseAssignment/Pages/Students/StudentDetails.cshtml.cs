@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using StudentAccomodation.Models;
@@ -18,14 +19,15 @@ namespace DatabaseAssignment.Pages.Students
             _leasingService = leasingService;
         }
         
-        public void OnGet(int id)
+        public void OnGet(string id)
         {
-            Student = _studentService.GetStudentById(id);
+            
+            Student = _studentService.GetStudentById(Convert.ToInt32(id));
             if (Student == null)
             {
                 RedirectToPage("/Students/GetStudents");
             }
-            Leasings = _leasingService.GetStudentsLeasings(id);
+            Leasings = _leasingService.GetStudentsLeasings(Convert.ToInt32(id));
             
             
             

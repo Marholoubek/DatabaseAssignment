@@ -12,5 +12,7 @@ namespace StudentAccomodation.Services.Interfaces
         IEnumerable<Student> GetAllWaitingStudents();
         
         Student GetStudentById(int id);
+        
+        void DeleteStudent(int id);
     }
 }
