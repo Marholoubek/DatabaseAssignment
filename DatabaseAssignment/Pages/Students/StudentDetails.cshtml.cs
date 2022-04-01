@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using StudentAccomodation.Models;
 using StudentAccomodation.Services.Interfaces;
@@ -8,7 +9,7 @@ namespace StudentAccomodation.Pages.Students
 {
     public class StudentDetails : PageModel
     {
-        public Student Student { get; set; }
+        [BindProperty]public Student Student { get; set; }
         public IEnumerable<Leasing> Leasings { get; set; }
         public List<Room> Rooms { get; set; }
 
