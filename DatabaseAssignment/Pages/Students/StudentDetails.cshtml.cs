@@ -40,10 +40,10 @@ namespace StudentAccomodation.Pages.Students
             }
         }
         
-        public void OnPost()
+        public IActionResult OnPost()
         {
             _studentService.DeleteStudent(Student.StudentNo);
-            RedirectToPage("/Students/GetStudents");
+            return RedirectToPage("/Students/GetStudents");
         }
     }
 }
