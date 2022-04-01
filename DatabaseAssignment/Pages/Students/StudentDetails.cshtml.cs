@@ -22,6 +22,7 @@ namespace StudentAccomodation.Pages.Students
             _leasingService = leasingService;
             _roomService = roomService;
             Rooms = new List<Room>();
+            Leasings = new List<Leasing>();
         }
 
         public void OnGet(string id)
