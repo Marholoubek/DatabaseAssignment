@@ -43,7 +43,7 @@ namespace StudentAccomodation.Pages.Students
         public IActionResult OnPost()
         {
             _studentService.DeleteStudent(Student.StudentNo);
-            return RedirectToPage("/Students/GetStudents");
+           return RedirectToPage("/Students/GetStudents");
         }
     }
 }
