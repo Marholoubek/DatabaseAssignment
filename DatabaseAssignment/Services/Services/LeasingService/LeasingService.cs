@@ -25,5 +25,10 @@ namespace StudentAccomodation.Services.Services.LeasingService
         {
             service.AssignRoomToStudent(id);
         }
+
+        public IEnumerable<Leasing> GetStudentsLeasings(int id)
+        {
+            return service.GetStudentsLeasings(id);
+        }
     }
 }

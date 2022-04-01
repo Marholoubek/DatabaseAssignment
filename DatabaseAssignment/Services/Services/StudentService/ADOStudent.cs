@@ -27,6 +27,12 @@ namespace StudentAccomodation.Services.Services.StudentService
             string query = "select *  from Student where Has_Room = 'False' ORDER BY Registration_Date ASC";
             return GetStudents(query);
         }
+
+        public Student GetStudentById(int id)
+        {
+            string query = $"select *  from Student where Student_No = {id}";
+            return GetStudents(query).First();
+        }
         
         public List<Student> GetAllAcceptedStudents()
         {

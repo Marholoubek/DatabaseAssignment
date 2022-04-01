@@ -88,12 +88,22 @@ namespace StudentAccomodation.Services.Services.LeasingService
             }
         }
 
+        public List<Leasing> GetStudentsLeasings(int id)
+        {
+            string query = $"select * from Leasing where Student_No = {id}";
+            return GetLeasings(query);
+        }
+
         public List<Leasing> GetAllLeasings()
+        {
+            string query = "select *  from Leasing";
+            return GetLeasings(query);
+        }
+
+        public List<Leasing> GetLeasings(string query)
         {
             List<Leasing> returnList = new List<Leasing>();
             string connectionString = Configuration["ConnectionStrings:AccommodationConection"];
-            string query = "select *  from Leasing";
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();

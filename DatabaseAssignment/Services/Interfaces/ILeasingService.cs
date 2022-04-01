@@ -9,6 +9,9 @@ namespace StudentAccomodation.Services.Interfaces
    public interface ILeasingService
     {
         IEnumerable<Leasing> GetAllLeasings();
+        IEnumerable<Leasing> GetStudentsLeasings(int id);
         void AssignRoomToStudent(int id);
+        
+        
     }
 }

@@ -1,0 +1,19 @@
+@page
+@model StudentAccomodation.Pages.Students.StudentDetails
+<h1>Student details. Student number: @Model.Student.StudentNo</h1>
+<h3>Name: @Model.Student.SName</h3>
+<h3>Address: @Model.Student.SAddress</h3>
+<h3>Registration date: @Model.Student.RegistrationDate</h3>
+
+<h2>Leasings</h2>
+@{
+    foreach (var leasing in Model.Leasings)
+    {
+        <div class="my-2">
+            <h3>Leasing: @leasing.LeasingNo</h3>
+            <h4>Place number: @leasing.PlaceNo</h4>
+            <h4>Start date: @leasing.DateFrom</h4>
+            <h4>End date: @leasing.DateTo</h4>
+        </div>
+    }
+}
