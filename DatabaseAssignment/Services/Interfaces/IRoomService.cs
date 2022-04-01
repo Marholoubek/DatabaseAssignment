@@ -13,5 +13,7 @@ namespace StudentAccomodation.Services.Interfaces
         IEnumerable<Room> GetAllRoomsInApartment(int id);
         IEnumerable<Room> GetAllVacantRooms();
         
+        Room GetRoom(int id);
+        
     }
 }

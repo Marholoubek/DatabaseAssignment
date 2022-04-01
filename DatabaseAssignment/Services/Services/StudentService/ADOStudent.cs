@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using StudentAccomodation.Services.Services.LeasingService;
 
 
 namespace StudentAccomodation.Services.Services.StudentService
@@ -12,18 +13,27 @@ namespace StudentAccomodation.Services.Services.StudentService
     public class ADOStudent
     {
         public IConfiguration Configuration { get; }
+        private ADOLeasing _leasingService;
         public ADOStudent(IConfiguration configuration)
         {
             Configuration = configuration;
+            _leasingService = new ADOLeasing(configuration);
         }
+        
 
         public void DeleteStudent(int id)
         {
             using (var connection = new SqlConnection(Configuration.GetConnectionString("DefaultConnection")))
             {
                 connection.Open();
+                List<Leasing> leasingList = _leasingService.GetStudentsLeasings(id);
                 var command = new SqlCommand("DELETE FROM Student WHERE Student_No = @id", connection);
                 var command2 = new SqlCommand("DELETE FROM Leasing WHERE Student_No = @id", connection);
+                foreach (var command3 in leasingList.Select(leasing => $"update Room set Occupied = 'False' where Place_No = {leasing.PlaceNo}").Select(query => new SqlCommand(query, connection)))
+                {
+                    command3.ExecuteNonQuery();
+                }
+
                 command.Parameters.AddWithValue("@id", id);
                 command2.Parameters.AddWithValue("@id", id);
                 command.ExecuteNonQuery();

@@ -36,5 +36,10 @@ namespace StudentAccomodation.Services.Services.RoomService
         {
             return service.GetAllVacantRooms();
         }
+
+        public Room GetRoom(int id)
+        {
+            return service.GetRoom(id);
+        }
     }
 }
