@@ -17,7 +17,7 @@
         @foreach (var item in Model.apartments)
         {
 <tr>
-    <td> @item.ApartmentNo </td>
+    <td><b> @item.ApartmentNo</b> </td>
     <td> @item.Address </td>
     <td> @item.Types </td>
     <td> <a class="nav-link text-dark" asp-area="" asp-page="/Apartments/ApartmentRooms" asp-route-id="@item.ApartmentNo">Display rooms</a> </td>

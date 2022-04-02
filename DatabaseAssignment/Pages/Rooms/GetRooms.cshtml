@@ -18,11 +18,11 @@
 @{
     if (Model.IsVacant)
     {
-        <a class="btn btn-secondary" asp-area="" asp-page="/Rooms/GetRooms" asp-route-isVacant="false">Display all rooms</a>
+        <a class="btn btn-success" style="margin-bottom: 10px;" asp-area="" asp-page="/Rooms/GetRooms" asp-route-isVacant="false">Display all rooms</a>
     }
     else
     {
-        <a class="btn btn-secondary" asp-area="" asp-page="/Rooms/GetRooms" asp-route-isVacant="true">Display vacant rooms</a>
+        <a class="btn btn-success" style="margin-bottom: 10px;" asp-area="" asp-page="/Rooms/GetRooms" asp-route-isVacant="true">Display vacant rooms</a>
     }
 }
 
@@ -41,7 +41,7 @@
     @foreach (var item in Model.rooms)
     {
         <tr>
-            <td> @item.PlaceNo </td>
+            <td> <b>@item.PlaceNo</b> </td>
             <td> @item.RentPerSemester </td>
             <td> @item.Occupied </td>
             <td> @item.RoomNo </td>
@@ -51,7 +51,7 @@
                 if (!item.Occupied)
                 {
                     <td>
-                        <a class="btn btn-primary text-dark" asp-area="" asp-page="/Rooms/GetRooms" asp-route-placeNo="@item.PlaceNo">Asign</a>
+                        <a class="btn btn-warning text-light" asp-area="" asp-page="/Rooms/GetRooms" asp-route-placeNo="@item.PlaceNo">Asign</a>
 
                     </td>
                 }

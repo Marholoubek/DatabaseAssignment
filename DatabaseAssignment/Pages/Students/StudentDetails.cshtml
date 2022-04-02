@@ -1,46 +1,66 @@
 @page
 @model StudentAccomodation.Pages.Students.StudentDetails
-<h1>Student details. Student number: @Model.Student.StudentNo</h1>
-<h3>Name: @Model.Student.SName</h3>
-<h3>Address: @Model.Student.SAddress</h3>
-<h3>Registration date: @Model.Student.RegistrationDate</h3>
+
+
+    <h4 style="margin-top: 10px">Student Details:</h4>
+<ul class="list-group">
+    <li class="list-group-item"><h5>Student number: @Model.Student.StudentNo</h5></li>
+    <li class="list-group-item"> <h5>Name: @Model.Student.SName</h5></li>
+    <li class="list-group-item"><h5>Address: @Model.Student.SAddress</h5></li>
+    <li class="list-group-item"><h5>Registration date: @Model.Student.RegistrationDate</h5></li>
+</ul>
+
+
+
+
 
 <form method="Post">
     <input hidden type="number" asp-for=@Model.Student.StudentNo value=@Model.Student.StudentNo/>
-    <button type="submit" class="btn btn-danger">DeleteStudent</button>
+    <button style="margin-top: 10px" type="submit" class="btn btn-danger">DeleteStudent</button>
 </form>
 
-<h2>Leasings:</h2>
+<h4 style="margin-top: 10px">Leasings:</h4>
 @{
     foreach (var leasing in Model.Leasings)
     {
-        <div class="my-4">
-            <h3>Leasing: @leasing.LeasingNo</h3>
-            <h4>Place number: @leasing.PlaceNo</h4>
-            <h4>Start date: @leasing.DateFrom</h4>
-            <h4>End date: @leasing.DateTo</h4>
-        </div>
+    <div class="my-4">
+        <ul class="list-group">
+            <li class="list-group-item"><h5>Leasing: @leasing.LeasingNo</h5></li>
+            <li class="list-group-item"> <h5>Place number: @leasing.PlaceNo</h5></li>
+            <li class="list-group-item"><h5>Start date: @leasing.DateFrom</h5></li>
+            <li class="list-group-item"><h5>End date: @leasing.DateTo</h5></li>
+        </ul>
+        
+       
+        
+        
+    </div>
     }
 }
-<h2>Rooms:</h2>
+<h4>Rooms:</h4>
 @{  foreach (var room in Model.Rooms)
     {
-        <div class="my-4">
-            <h3>Room: @room.RoomNo</h3>
-            <h4>Place number: @room.PlaceNo</h4>
+    <div class="my-4">
+        <ul class="list-group">
+            <li class="list-group-item"> <h5>Room: @room.RoomNo</h5></li>
+            <li class="list-group-item"><h5>Place number: @room.PlaceNo</h5></li>
+            
             @{
                 if (room.DormitoryNo == null || room.DormitoryNo == 0)
                 {
-                    <h4>Appartment: @room.ApartmentNo</h4>
+                    <li class="list-group-item"><h5>Appartment: @room.ApartmentNo</h5></li>
+                    
                 }
                 else
                 {
-                    <h4>Dormitory: @room.DormitoryNo</h4>
+                    <li class="list-group-item"> <h5>Dormitory: @room.DormitoryNo</h5></li>
+                    
                 }
             }
-            <h4>Rent per semester: @room.RentPerSemester</h4>
+            <li class="list-group-item"><h5>Rent per semester: @room.RentPerSemester</h5></li>
             
-        </div>
+        </ul>
+    </div>
     }
     
 }

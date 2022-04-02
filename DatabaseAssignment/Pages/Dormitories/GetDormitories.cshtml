@@ -16,7 +16,7 @@
         @foreach (var item in Model.dormitories)
         {
 <tr>
-    <td> @item.DormitoryNo </td>
+    <td><b> @item.DormitoryNo</b> </td>
     <td> @item.Name </td>
     <td> @item.Address </td>
     <td> <a class="nav-link text-dark" asp-area="" asp-page="/Dormitories/DormitoriesRooms" asp-route-id="@item.DormitoryNo">Display rooms</a> </td>
